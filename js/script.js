@@ -1,5 +1,4 @@
 var listChars = document.querySelectorAll(".char");
-console.log(listChars);
 var i = 0;
  var goback = setInterval( function(){
         console.log(i);
@@ -17,30 +16,32 @@ var i = 0;
     },200);
 
 var listParas = document.querySelectorAll("p");
-console.log(listParas);
 var containers = document.querySelector(".container")
 
 listParas.forEach(item=>{
     item.addEventListener("mouseover", (e)=>{
-        console.log(e.target);
         console.log(e.target.innerHTML.trim());
     })
 })
 var btnSummit = document.querySelector("button");
 var gg = document.querySelector(".person-message");
 var wapperChatBox = document.querySelector(".chatbox");
-console.log(btnSummit);
+var abcd = document.querySelector("input");
 btnSummit.addEventListener("click", ()=>{
-    var abcd = document.querySelector("input");
     var newWapper = document.createElement("div");
     newWapper.classList.add("person-message");
     var newContent = document.createElement("p");
     newContent.classList.add("content-message");
     newContent.innerHTML = abcd.value;
-    newWapper.appendChild(newContent);
-    console.log(newWapper);
-    
+    newWapper.appendChild(newContent);   
     wapperChatBox.appendChild(newWapper);
     abcd.value = "";
-    //console.log(abc);
-})
+    document.querySelector(".end").scrollIntoView();
+});
+
+var input = document.getElementById("myInput");
+input.addEventListener("keyup", function(event) {
+  if (event.keyCode === 13) {
+   btnSummit.click();
+  }
+});
