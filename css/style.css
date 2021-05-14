@@ -3,9 +3,10 @@
     padding: 0px;
     box-sizing: border-box;
 }
-.container {
+.wapper {
     margin: 0px 30%;
-    display: none;
+    /*display: none; */
+    margin-bottom: 40px;
 }
 @keyframes Show {
     from {
@@ -101,4 +102,34 @@ h1 { color: #ff000d; font-family: "Great Vibes", cursive; font-size: 165px; line
 }
 .content-message:hover  {
     background-color: red;
+}
+span {
+    display: none;
+}
+p:hover + span {
+    display: inline-block;
+}
+.reply-answer {
+
+}
+input {
+    background-color: #dae9f7;
+    border-radius: 18px;
+    outline: none;
+    border: none;
+    height: 35px;
+    padding: 12px;
+    width: 540px;
+}
+button {
+    display: inline-block;
+    width: 60px;
+    outline: none;
+    border: none;
+    background-color: #006cd1;
+    height: 35px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #d1c300;
 }
