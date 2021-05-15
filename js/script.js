@@ -25,19 +25,31 @@ var gg = document.querySelector(".person-message");
 var wapperChatBox = document.querySelector(".chatbox");
 var abcd = document.querySelector("input");
 
+var listCharKey = "abcdefghijklmnopqrstuvwxyz";
+var arraySaveKey= [];
+(function prepareArraySaveKey() {
+    for(var i = 0;i<listCharKey.length;i++) {
+        arraySaveKey[listCharKey.charCodeAt(i)] = 0;
+        console.log(listCharKey.charCodeAt(i));
+        console.log(arraySaveKey[listCharKey.charCodeAt(i)]);
+    }
+})();
 
 function chatBoxReply() {
     var newChatBoxRep = document.createElement("div");
     var newContentChatBoxRep = document.createElement("p");
     newChatBoxRep.classList.add("chatbox-message");
     newContentChatBoxRep.classList.add("content-message");
-    var keyChar = abcd.value[abcd.value.length-1];
-    fetch("https://api.datamuse.com/words?sp=" + keyChar + "*")  
+    var keyChar = abcd.value[abcd.value.length-1].toLowerCase();
+    arraySaveKey[keyChar.charCodeAt(0)]++;
+    var temp = arraySaveKey[keyChar.charCodeAt(0)];
+    fetch("https://api.datamuse.com/words?sp=" + keyChar + "*&max=10000000")  
     .then(response => response.json())
     .then(data => 
         {
             console.log(keyChar);
-            newContentChatBoxRep.innerHTML = data[0].word;
+            console.log(data);
+            newContentChatBoxRep.innerHTML = data[temp].word;
             newChatBoxRep.appendChild(newContentChatBoxRep);
             wapperChatBox.appendChild(newChatBoxRep);
 
